@@ -1,4 +1,3 @@
-
 import java.net.*;
 import java.io.*;
 
@@ -8,7 +7,7 @@ public class tcp1ser{
     public static void main(String [] args){
         
         try {
-            if (args.length!=1) throw new Exception("Wrong number of parameters, correct use: \njava udpser port_numer");
+            if (args.length!=1) throw new Exception("Wrong number of parameters, correct use: \njava tcp1ser port_numer");
         } catch (Exception e) {
             System.out.println(e.getMessage());
             System.exit(-1);
@@ -26,14 +25,18 @@ public class tcp1ser{
                 DataOutputStream output=new DataOutputStream(socket.getOutputStream());
                 while(true){
                 try{
+                String message =input.readUTF();
+                String [] ar=message.split(" ");
+                for (int i = 0; i < ar.length; i++) {
+                    acumulator=acumulator+(Integer.parseInt(ar[i]));
+                }
+
                 
-                int number=input.readInt();
-                acumulator+=number;
                 System.out.println(acumulator);
                 output.writeInt(acumulator);
                 }
                 catch(SocketException e){
-                    //System.out.println(e.getMessage());
+                    System.out.println(e.getMessage());
                     break;
                 }
                 catch(IOException e){
@@ -51,11 +54,7 @@ public class tcp1ser{
         catch(Exception e){
             System.out.println(e.getMessage());
             
-        }
-        
-        
-        
-
+        }    
     }
 
     
