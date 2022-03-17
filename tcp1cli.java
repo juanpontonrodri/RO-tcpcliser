@@ -43,7 +43,6 @@ public class tcp1cli{
             }while(true);                   
         }
         catch (Exception e) {                         
-            System.out.print("Error");
             System.exit(-1);
         }      
     }

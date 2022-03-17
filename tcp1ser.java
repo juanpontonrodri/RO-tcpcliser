@@ -30,7 +30,6 @@ public class tcp1ser{
                 output.writeInt(acumulator);
                 }
                 catch(SocketException e){
-                    System.out.println(e.getMessage());
                     break;
                 }
                 catch(IOException e){
@@ -39,12 +38,11 @@ public class tcp1ser{
                 }
                 }
                 catch(Exception e){
-                    System.out.println(e.getMessage());
+                    break;
                }
             }
         } 
         catch(Exception e){
-            System.out.println(e.getMessage());
         }        
     }
 
